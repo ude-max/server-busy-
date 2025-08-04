@@ -5,11 +5,19 @@
   <title>Server Busy</title>
   <style>
     body {
+      margin: 0;
       background-color: #f9f9f9;
       font-family: Arial, sans-serif;
       text-align: center;
       padding-top: 100px;
       color: #333;
+    }
+    #content {
+      display: none;
+    }
+    #loading {
+      font-size: 20px;
+      color: #555;
     }
     h1 {
       font-size: 36px;
@@ -27,8 +35,21 @@
   </style>
 </head>
 <body>
-  <h1>503 - Server Busy</h1>
-  <p>The server is currently busy or unavailable.<br>Please try again later.</p>
-  <div class="error-code">Error Code: GQ503-TEMP</div>
+  <div id="loading">Please wait while we process your request...</div>
+
+  <div id="content">
+    <h1>503 - Server Busy</h1>
+    <p>The server is currently busy or unavailable.<br>Please try again later.</p>
+    <div class="error-code">Error Code: GQ503-TEMP</div>
+  </div>
+
+  <script>
+    // Show content after 2 minutes (120,000 milliseconds)
+    setTimeout(function() {
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    }, 120000); // 2 minutes
+  </script>
 </body>
 </html>
+
