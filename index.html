@@ -12,21 +12,41 @@
       padding-top: 100px;
       color: #333;
     }
+
     #content {
       display: none;
     }
+
     #loading {
       font-size: 20px;
       color: #555;
     }
+
+    .spinner {
+      margin: 30px auto;
+      width: 40px;
+      height: 40px;
+      border: 5px solid #ccc;
+      border-top: 5px solid #007bff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     h1 {
       font-size: 36px;
       color: #cc0000;
     }
+
     p {
       font-size: 18px;
       margin-top: 20px;
     }
+
     .error-code {
       font-size: 14px;
       color: #777;
@@ -35,7 +55,10 @@
   </style>
 </head>
 <body>
-  <div id="loading">Please wait while we process your request...</div>
+  <div id="loading">
+    Please wait while we process your request...
+    <div class="spinner"></div>
+  </div>
 
   <div id="content">
     <h1>503 - Server Busy</h1>
@@ -44,7 +67,6 @@
   </div>
 
   <script>
-    // Show content after 2 minutes (120,000 milliseconds)
     setTimeout(function() {
       document.getElementById("loading").style.display = "none";
       document.getElementById("content").style.display = "block";
